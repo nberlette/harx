@@ -1,7 +1,7 @@
 {
-  "name": "har-extractor",
-  "version": "1.1.1",
-  "description": "A CLI that extract har file to directory.",
+  "name": "harx",
+  "version": "1.0.0-beta.1",
+  "description": "Simple CLI tool to extract HAR data.",
   "keywords": [
     "archieve",
     "directory",
@@ -11,30 +11,41 @@
     "har",
     "unzip"
   ],
-  "homepage": "https://github.com/azu/har-extractor",
-  "bugs": {
-    "url": "https://github.com/azu/har-extractor/issues"
-  },
+  "readme": "https://github.com/nberlette/harx#readme",
+  "homepage": "https://n.berlette.com/harx",
+  "bugs": "https://github.com/nberlette/harx/issues",
   "license": "MIT",
-  "author": "azu",
+  "author": {
+    "name": "Nicholas Berlette",
+    "email": "nick@berlette.com",
+    "url": "https://n.berlette.com/harx"
+  },
   "files": [
     "bin/",
     "lib/",
     "src/"
   ],
-  "main": "lib/har-extractor.js",
-  "types": "lib/har-extractor.d.ts",
+  "main": "lib/harx.js",
+  "types": "lib/harx.d.ts",
   "bin": {
-    "har-extractor": "./bin/cmd.js"
+    "harx": "./bin/cmd.js"
   },
   "directories": {
     "lib": "lib",
-    "test": "test"
+    "test": "test",
+    "bin": "bin"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/azu/har-extractor.git"
+  "exports": {
+    ".": {
+      "import": "./lib/harx.js",
+      "require": "./lib/harx.js",
+      "default": "./lib/harx.js"
+    },
+    "./": "./src",
+    "./types": "./lib/harx.d.ts",
+    "./package.json": "./package.json"
   },
+  "repository": "nberlette/harx",
   "scripts": {
     "build": "cross-env NODE_ENV=production tsc -p .",
     "clean": "rimraf lib/",
@@ -46,7 +57,11 @@
   "prettier": {
     "printWidth": 120,
     "singleQuote": false,
-    "tabWidth": 4
+    "tabWidth": 2,
+    "semi": true,
+    "useTabs": false,
+    "arrowParens": "always",
+    "trailingComma": "es5"
   },
   "devDependencies": {
     "@types/har-format": "^1.2.5",
