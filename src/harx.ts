@@ -1,16 +1,15 @@
-import * as fs from "fs";
-import { Har, Entry } from "har-format";
-import * as path from "path";
+import fs from "fs";
+import type { Har, Entry } from "har-format";
+import path from "path";
+import filenamify from "filenamify";
+import humanizeUrl from "humanize-url";
+import makeDir from "make-dir";
 
-const filenamify = require("filenamify");
-const humanizeUrl = require("humanize-url");
-const makeDir = require("make-dir");
 export const getEntryContentAsBuffer = (entry: Entry): Buffer | undefined => {
     const content = entry.response.content;
     const text = content.text;
-    if (text === undefined) {
-        return;
-    }
+    // @ts-ignore
+    if (text === undefined) return;
     if (content.encoding === "base64") {
         return Buffer.from(text, "base64");
     } else {

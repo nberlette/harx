@@ -1,29 +1,26 @@
 {
   "compilerOptions": {
-    /* Basic Options */
-    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "newLine": "LF",
-    "outDir": "./lib/",
-    "target": "es5",
-    "sourceMap": true,
+    "target": "esnext",
+    "baseUrl": "./src",
+    "paths": {
+	"harx": ["./harx.d.ts", "./harx.ts"],
+	"harx/cli": ["./cli.d.ts", "./cli.ts"]
+    },
+    "sourceMap": false,
     "declaration": true,
     "jsx": "preserve",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    /* Strict Type-Checking Options */
-    "strict": true,
-    /* Additional Checks */
+    "lib": ["esnext", "dom"],
+    "strict": false,
     "noUnusedLocals": true,
-    /* Report errors on unused locals. */
     "noUnusedParameters": true,
-    /* Report errors on unused parameters. */
     "noImplicitReturns": true,
-    /* Report error when not all code paths in function return a value. */
-    "noFallthroughCasesInSwitch": true
-    /* Report errors for fallthrough cases in switch statement. */
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "checkJs": false
   },
   "include": [
     "src/**/*"
