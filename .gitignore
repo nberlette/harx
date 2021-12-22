@@ -87,3 +87,4 @@ _dist
 _dist/**
 node_modules/*
 **/node_modules/**
+dist
