@@ -21,13 +21,14 @@ async function bundle(input, files, executable = false) {
 	  , dts = input.replace(/\.[mc]?[tj]s$/, '.d.ts');
 
 	await build(input, mjs, externals);
+	(executable) && chmod(mjs, 0755);
+
 	let commonjs = rewrite(files.import);
 	if (executable) {
-		chmod(mjs, 0755);
-		chmod(cjs, 0755);
 		commonjs = ['#!/usr/bin/env node', '"use strict";', '', commonjs].join('\n');
-	}
-	writeFile(cjs, commonjs);
+		writeFile(cjs, commonjs);
+		chmod(cjs, 0755);
+	} else writeFile(cjs, commonjs);
 
 	if (!exists(dts)) return console.warn('Missing "%s" file!', dts),process.exitCode=1;
 
