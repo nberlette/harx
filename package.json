@@ -100,5 +100,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "mocha": {
+    "require": ["ts-node-test-register"]
   }
 }
