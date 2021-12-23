@@ -1,6 +1,6 @@
 {
   "name": "harx",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Simple CLI tool to extract HAR data.",
   "keywords": [
     "http",
