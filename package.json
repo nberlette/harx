@@ -1,6 +1,6 @@
 {
   "name": "harx",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Simple CLI tool to extract HAR data.",
   "keywords": [
     "http",
@@ -102,6 +102,8 @@
     ]
   },
   "mocha": {
-    "require": ["ts-node-test-register"]
+    "require": [
+      "ts-node-test-register"
+    ]
   }
 }
