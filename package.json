@@ -1,6 +1,10 @@
 {
-  "name": "harx",
+  "name": "@nberlette/harx",
   "version": "1.0.0-beta.4",
+  "publishConfig": {
+    "public": true
+  },
+  "private": false,
   "description": "Simple CLI tool to extract HAR data.",
   "keywords": [
     "http",

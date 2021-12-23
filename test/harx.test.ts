@@ -1,11 +1,10 @@
 import { describe } from "mocha";
 import * as path from "path";
-import { extract } from "../src/har-extractor";
+import { extract } from "harx";
 import * as fs from "fs";
 import * as assert from "assert";
-
-const glob = require("glob");
-const del = require("del");
+import * as glob from "glob";
+import * as del from "del";
 const outputDir = path.join(__dirname, "output");
 describe("har-extractor", () => {
     afterEach(() => {
