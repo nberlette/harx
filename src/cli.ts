@@ -1,13 +1,13 @@
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
-import { extract } from 'harx';
-import meow from 'meow';
-import type { Har } from 'har-format';
-// @ts-ignore
-const importMeta: any = import.meta;
+#!/usr/bin/env node
+
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { extract, ExtractOptions } from "./harx";
+import meow from "meow";
+import type { Har, Entry } from "har-format";
 
 const cli: any = meow(
-    `
+  `
     Usage
       $ harx <file> [options]
 
@@ -20,47 +20,46 @@ const cli: any = meow(
     Examples
       $ harx ./net.har --output /path/to/output
       $ harx ./net.har --verbose -r -o ./output
-`,  
-    {
-        flags: {
-            output: {
-                type: "string",
-                alias: "o"
-            },
-            removeQueryString: {
-                type: "boolean",
-                alias: "r",
-                default: false
-            },
-            verbose: {
-                type: "boolean",
-                default: true
-            },
-            dryRun: {
-                type: "boolean",
-		alias: "d",
-                default: false
-            }
-        },
-        autoHelp: true,
-	importMeta
-    }
+`,
+  {
+    flags: {
+      output: {
+        type: "string",
+        alias: "o",
+      },
+      removeQueryString: {
+        type: "boolean",
+        alias: "r",
+        default: false,
+      },
+      verbose: {
+        type: "boolean",
+        default: true,
+      },
+      dryRun: {
+        type: "boolean",
+        alias: "d",
+        default: false,
+      },
+    },
+    autoHelp: true,
+    importMeta: import.meta,
+  }
 );
 
 const harFilePath: string = cli.input[0];
-if (!harFilePath) {
-    cli.showHelp();
-}
+if (!harFilePath) cli.showHelp();
 try {
-    const harContent: Har = JSON.parse(readFileSync(resolve(process.cwd(), harFilePath), "utf-8"));
-    extract(harContent, {
-        verbose: cli.flags.verbose,
-        dryRun: cli.flags.dryRun,
-        removeQueryString: cli.flags.removeQueryString,
-        outputDir: cli.flags.output
-    });
+  const harContent: Har = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), harFilePath), "utf-8"));
+  extract(harContent, {
+    verbose: cli.flags.verbose,
+    dryRun: cli.flags.dryRun,
+    removeQueryString: cli.flags.removeQueryString,
+    outputDir: cli.flags.output,
+  });
 } catch (error: any) {
-    console.error(error);
-    cli.showHelp();
+  console.error(error);
+  cli.showHelp();
 }
 
+export type { Har, Entry, ExtractOptions };

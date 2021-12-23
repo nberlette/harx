@@ -1,9 +1,13 @@
 {
-  "name": "@nberlette/harx",
-  "version": "1.0.0-beta.5",
-  "publishConfig": {
-    "public": true
+  "name": "harx",
+  "version": "1.0.0-beta.6",
+  "license": "MIT",
+  "author": {
+    "name": "Nicholas Berlette",
+    "email": "nick@berlette.com",
+    "url": "https://n.berlette.com/harx"
   },
+  "type": "module",
   "private": false,
   "description": "Simple CLI tool to extract HAR data.",
   "keywords": [
@@ -19,40 +23,29 @@
   "readme": "https://github.com/nberlette/harx#readme",
   "homepage": "https://n.berlette.com/harx",
   "bugs": "https://github.com/nberlette/harx/issues",
-  "license": "MIT",
-  "author": {
-    "name": "Nicholas Berlette",
-    "email": "nick@berlette.com",
-    "url": "https://n.berlette.com/harx"
-  },
   "files": [
     "dist"
   ],
-  "main": "dist/harx.js",
-  "module": "dist/harx.mjs",
-  "esnext": "dist/harx.mjs",
-  "unpkg": "dist/harx.mjs",
+  "main": "dist/harx.cjs",
+  "module": "dist/harx.js",
+  "unpkg": "dist/harx.js",
   "types": "dist/harx.d.ts",
   "bin": {
     "harx": "./dist/cli.js"
   },
   "exports": {
     ".": {
-      "import": "./dist/harx.mjs",
-      "require": "./dist/harx.js"
+      "import": "./dist/harx.js",
+      "require": "./dist/harx.cjs"
     },
     "./cli": {
-      "import": "./dist/cli.mjs",
-      "require": "./dist/cli.js"
+      "import": "./dist/cli.js"
     },
-    "./": "./dist",
     "./package.json": "./package.json"
   },
   "repository": "nberlette/harx",
   "scripts": {
-    "build": "cross-env NODE_ENV=production node bin",
-    "build:clean": "rimraf dist",
-    "build:types": "tsc --noEmit --skipLibCheck",
+    "build": "rollup -c",
     "test": "mocha \"test/**/*.ts\"",
     "lint": "prettier --check \"**/*.{mjs,cjs,js,jsx,ts,tsx,css}\"",
     "lint:fix": "prettier --write \"**/*.{mjs,cjs,js,jsx,ts,tsx,css}\""
@@ -67,31 +60,31 @@
     "trailingComma": "es5"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/har-format": "~1.2.8",
-    "@types/meow": "~6.0.0",
     "@types/mocha": "~9.0.0",
     "@types/node": "~17.0.2",
-    "cross-env": "~7.0.3",
     "del": "~6.0.0",
-    "esbuild": "~0.14.7",
+    "filenamify": "~5.0.2",
     "glob": "~7.2.0",
+    "humanize-url": "~3.0.0",
     "husky": "~7.0.4",
     "kleur": "~4.1.4",
     "lint-staged": "~12.1.3",
+    "meow": "~10.1.2",
     "mocha": "~9.1.3",
     "prettier": "~2.5.1",
     "rewrite-imports": "2.0.3",
-    "rimraf": "~3.0.2",
+    "rollup": "^2.61.1",
+    "rollup-plugin-preserve-shebang": "^1.0.1",
     "ts-node": "~10.4.0",
     "ts-node-test-register": "~10.0.0",
+    "tslib": "^2.3.1",
     "typescript": "~4.5.4",
     "zlib": "~1.0.5"
-  },
-  "dependencies": {
-    "filenamify": "~5.0.2",
-    "humanize-url": "~3.0.0",
-    "make-dir": "~3.1.0",
-    "meow": "~10.1.2"
   },
   "husky": {
     "hooks": {

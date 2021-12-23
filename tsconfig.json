@@ -1,32 +1,32 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "lib": ["esnext", "dom"],
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "newLine": "LF",
-    "target": "esnext",
-    "baseUrl": "./src",
-    "paths": {
-	"harx": ["./harx.d.ts", "./harx.ts"],
-	"harx/cli": ["./cli.d.ts", "./cli.ts"]
-    },
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
     "sourceMap": false,
     "declaration": true,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "strict": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowJs": true,
-    "checkJs": false
+    "declarationDir": "dist",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "allowUnusedLabels": true,
+    "allowUnreachableCode": true,
+    "suppressExcessPropertyErrors": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "types": ["node", "mocha", "har-format"],
+    "baseUrl": ".",
+    "paths": {
+      "harx": ["./src/harx.ts"],
+      "harx/cli": ["./src/cli.ts"]
+    }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    ".git",
-    "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "exclude": [".git", "node_modules", "dist", "**/node_modules/**"]
 }
