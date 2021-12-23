@@ -1,0 +1,16 @@
+image: nberlette/gitpod-enhanced:latest
+tasks:
+  - init: pnpm install
+github:
+  prebuilds:
+    master: true
+    branches: false
+    addCheck: true
+    addLabel: true
+vscode:
+  extensions:
+   - christian-kohler.npm-intellisense
+   - esbenp.prettier-vscode
+   - eamodio.gitlens
+   - eg2.vscode-npm-script
+   - christian-kohler.path-intellisense
