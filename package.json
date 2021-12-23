@@ -1,6 +1,6 @@
 {
-  "name": "@nberlette/harx",
-  "version": "1.0.0-beta.4",
+  "name": "harx",
+  "version": "1.0.0-beta.5",
   "publishConfig": {
     "public": true
   },
