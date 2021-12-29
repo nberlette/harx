@@ -1,8 +1,8 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
 import filenamify from "filenamify";
+import * as fs from "fs";
+import type { Entry, Har } from "har-format";
 import humanizeUrl from "humanize-url";
-import type { Har, Entry } from "har-format";
+import * as path from "path";
 
 export const getEntryContentAsBuffer = (entry: Entry): Buffer | undefined => {
   const content = entry.response.content;

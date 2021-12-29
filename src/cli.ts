@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-
-import * as fs from "node:fs";
-import * as path from "node:path";
-import { extract, ExtractOptions } from "./harx";
+import * as fs from "fs";
+import type { Entry, Har } from "har-format";
 import meow from "meow";
-import type { Har, Entry } from "har-format";
+import * as path from "path";
+import { extract, ExtractOptions } from "./harx";
 
 const cli: any = meow(
   `

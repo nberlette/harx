@@ -88,3 +88,9 @@ _dist/**
 node_modules/*
 **/node_modules/**
 dist
+.old
+.old/*
+.old/**/*
+test/output
+test/output/*
+test/output/**
